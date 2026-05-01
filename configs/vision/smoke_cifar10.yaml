@@ -1,0 +1,46 @@
+# Smoke test: runs in ~5 minutes on a modest GPU.
+# Useful for verifying the pipeline end-to-end before committing real compute.
+run_name: smoke_cifar10_resnet20_nonprivate
+seed: 0
+output_dir: runs/smoke
+
+modality: vision
+dataset:
+  name: cifar10
+  data_root: ./data
+  partition: dirichlet
+  alpha: 0.3
+  num_clients: 20
+  augment: true
+
+model:
+  name: resnet20
+  num_classes: 10
+
+server:
+  rounds: 20
+  sample_fraction: 0.2
+  sampling: uniform
+  eval_every: 5
+  save_update_trace: true
+
+local:
+  epochs: 1
+  lr: 0.05
+  momentum: 0.9
+  batch_size: 32
+  max_steps: 20
+
+mechanism:
+  name: nonprivate
+  clip_norm: 10.0
+
+analysis:
+  trace_proj_dim: 2048
+  trace_max_samples: 128
+
+attacks:
+  mia:
+    enabled: true
+    n_members: 512
+    n_nonmembers: 512

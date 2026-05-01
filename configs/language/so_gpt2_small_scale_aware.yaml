@@ -1,0 +1,46 @@
+run_name: stackoverflow_gpt2_small_scale_aware
+seed: 0
+output_dir: runs/stackoverflow/gpt2_small/scale_aware
+modality: gpt2
+dataset:
+  name: stackoverflow
+  data_root: ./data/stackoverflow_subset
+  seq_len: 128
+  max_users: 2000
+  max_posts_per_client: 200
+model:
+  name: gpt2-small
+  use_lora: false
+server:
+  rounds: 200
+  sample_fraction: 0.05
+  sampling: poisson
+  eval_every: 25
+  save_update_trace: true
+local:
+  epochs: 1
+  lr: 5.0e-5
+  weight_decay: 0.01
+  batch_size: 4
+  max_steps: 50
+mechanism:
+  name: scale_aware
+  clip_norm: 1.0
+  reference_sigma: 1.0
+  reference_dim: 186
+  effective_dim: 186
+  expected_participants: 100.0
+analysis:
+  trace_proj_dim: 8192
+  trace_max_samples: 256
+attacks:
+  mia:
+    enabled: true
+  canary:
+    enabled: true
+    num_canaries: 100
+    repeats: 4
+    suffix_len: 6
+    max_new_tokens: 24
+    exposure_subset: 20
+    candidate_set_size: 1024

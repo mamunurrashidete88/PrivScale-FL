@@ -1,0 +1,48 @@
+run_name: cifar100_resnet110_adaptive_clip
+seed: 0
+output_dir: runs/cifar100/resnet110/adaptive_clip
+
+modality: vision
+dataset:
+  name: cifar100
+  data_root: ./data
+  partition: dirichlet
+  alpha: 0.1
+  num_clients: 100
+  augment: true
+
+model:
+  name: resnet110
+  num_classes: 100
+
+server:
+  rounds: 500
+  sample_fraction: 0.1
+  sampling: poisson
+  eval_every: 25
+  save_update_trace: true
+
+local:
+  epochs: 5
+  lr: 0.05
+  momentum: 0.9
+  batch_size: 32
+
+mechanism:
+  name: adaptive_clip
+  init_clip_norm: 1.0
+  target_quantile: 0.5
+  lr_clip: 0.2
+  noise_multiplier: 1.0   # set by calibration script
+  expected_participants: 10.0
+  quantile_noise_frac: 0.05
+
+analysis:
+  trace_proj_dim: 8192
+  trace_max_samples: 512
+
+attacks:
+  mia:
+    enabled: true
+    n_members: 2048
+    n_nonmembers: 2048
