@@ -158,9 +158,6 @@ PrivScale/
 │   ├── reproducibility.py            Seed management and reproducibility helpers
 │   └── visualization.py              Plotting and visualization utilities
 ├── figures/                          Generated plots (populated by generate_plots.py)
-├── ARTIFACT.md                       Artifact documentation and scope
-├── WORKFLOW.md                       Step-by-step reproduction instructions
-├── CITATION.cff                      Citation metadata
 ├── LICENSE                           Project license
 ├── Makefile                          Build and experiment targets
 ├── pyproject.toml                    Package metadata
