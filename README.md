@@ -80,7 +80,7 @@ Requires ~50 GB disk and 30–60 minutes. Uses the HuggingFace
 ## Artifact Structure
 
 ```
-privscale-fl/
+PrivScale/
 ├── privscale/                        Core library
 │   ├── data/
 │   │   ├── partitioners.py           Dirichlet-α and pathological client partitioners
@@ -122,6 +122,16 @@ privscale-fl/
 │   └── language/                     12 Stack Overflow configs (3 models × 4 mechanisms)
 │       ├── so_gpt2_{small,medium_lora,large_lora}_{nonprivate,fixed,adaptive,scale_aware}.yaml
 │       └── smoke_shakespeare.yaml    Quick smoke test config
+├── experiments/                      High-level experiment orchestration
+│   ├── run_full_comparison.py        Full mechanism comparison driver
+│   ├── run_risk_scaling.py           Privacy-risk scaling experiments
+│   ├── run_scaling_law.py            Scaling-law fitting experiments
+│   ├── run_spectral_validation.py    Spectral diagnostic experiments
+│   ├── run_calibration.py            Scale-aware calibration experiments
+│   └── run_ablation.py              Ablation study driver
+├── evaluation/                       Evaluation utilities
+│   ├── evaluator.py                  Unified evaluator for privacy and utility metrics
+│   └── metrics.py                    Metric computation helpers
 ├── scripts/
 │   ├── run_experiment.py             Main entry point: config → data → model → FL → attacks → outputs
 │   ├── calibrate_noise.py            Bisection search for σ at target (ε, δ) via RDP
@@ -129,16 +139,35 @@ privscale-fl/
 │   ├── aggregate_results.py          Cross-run aggregation into tidy CSV
 │   ├── generate_plots.py             Plots with equal-footing trend fitting
 │   ├── run_vision_ladder.sh          Full 6-point vision ladder driver (6 models × 4 mechs × seeds)
-│   └── run_language_ladder.sh        Full language ladder driver (3 models × 4 mechs × seeds)
+│   ├── run_language_ladder.sh        Full language ladder driver (3 models × 4 mechs × seeds)
+│   ├── run_all_experiments.sh        Master script for full experiment suite
+│   ├── run_quick_test.sh             Quick integration test
+│   ├── run_ablation.sh               Ablation study driver script
+│   ├── run_calibration.sh            Calibration experiment driver script
+│   ├── run_risk_scaling.sh           Risk-scaling experiment driver script
+│   ├── run_scaling_law.sh            Scaling-law experiment driver script
+│   └── run_spectral_validation.sh    Spectral validation driver script
 ├── tests/
+│   ├── conftest.py                   Shared test fixtures
 │   ├── test_rdp_accountant.py        RDP accountant invariant tests
 │   ├── test_clipping.py              L2 clipping correctness
 │   ├── test_partitioners.py          Dirichlet and pathological partition tests
 │   ├── test_fitting.py               Trend-fitting selection tests
 │   └── test_fl_simulator.py          End-to-end FedAvg convergence on synthetic data
-├── pyproject.toml
-├── requirements.txt
-└── README.md
+├── utils/                            Top-level shared utilities
+│   ├── reproducibility.py            Seed management and reproducibility helpers
+│   └── visualization.py              Plotting and visualization utilities
+├── figures/                          Generated plots (populated by generate_plots.py)
+├── ARTIFACT.md                       Artifact documentation and scope
+├── WORKFLOW.md                       Step-by-step reproduction instructions
+├── CITATION.cff                      Citation metadata
+├── LICENSE                           Project license
+├── Makefile                          Build and experiment targets
+├── pyproject.toml                    Package metadata
+├── setup.py                          Package installer
+├── pytest.ini                        Test configuration
+├── requirements.txt                  Python dependencies
+└── README.md                         This file
 ```
 
 
