@@ -277,7 +277,7 @@ attacks:
 
 Source code and experiment logs are available at:
 
-> https://anonymous.4open.science/r/PrivScale-FL/
+> https://anonymous.4open.science/status/PrivScale-FL
 
 ---
 
