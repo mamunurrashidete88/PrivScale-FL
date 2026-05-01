@@ -1,0 +1,29 @@
+[project]
+name = "privscale-fl"
+version = "0.1.0"
+description = "Federated learning experiments on privacy scaling with effective model dimension"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "transformers>=4.40",
+    "peft>=0.10",
+    "datasets>=2.18",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "pandas>=2.1",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "ruff>=0.3"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["privscale*"]

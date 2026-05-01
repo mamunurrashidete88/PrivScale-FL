@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use PrivScale-FL in your research, please cite:"
+title: "Privacy Risk Scales with Effective Dimension in Federated Learning"
+type: conference-paper
+authors:
+  - name: "Anonymous Authors"
+    affiliation: "Anonymous Institution"
+conference:
+  name: "Advances in Neural Information Processing Systems (NeurIPS)"
+year: 2026
+repository-code: "https://anonymous.4open.science/r/[ID]/"
+abstract: >
+  Privacy mechanisms in federated learning are typically calibrated
+  independently of model scale, implicitly assuming that privacy risk remains
+  stable as models grow. We challenge this assumption by introducing federated
+  leakage, a signal-level quantity measuring how much client-specific
+  information survives in privatized local update trajectories, and by
+  identifying effective model dimension as the key scaling variable. We derive
+  a conditional scaling law showing that federated leakage grows as
+  Theta(d / log d) with effective dimension d, show that fixed-noise DP-FL
+  protocols become progressively miscalibrated, and propose a scale-aware
+  noise calibration rule that preserves a target leakage regime.
+keywords:
+  - federated learning
+  - differential privacy
+  - privacy scaling
+  - effective dimension
+  - membership inference
+  - model scaling
+  - privacy debt
+license: MIT
