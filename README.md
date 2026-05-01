@@ -29,15 +29,10 @@ PrivScale-FL provides:
 
 
 
-## Installation
+## Requirements
 
-```bash
-git clone https://anonymous.4open.science/r/PrivScale-FL/ 
-cd privscale-fl
-pip install -e .
-```
-
-Requirements: Python ≥ 3.10, PyTorch ≥ 2.2. CUDA is optional but
+---
+Python ≥ 3.10, PyTorch ≥ 2.2. CUDA is optional but
 recommended for full-scale runs. GPT-2 experiments additionally require
 `transformers ≥ 4.40` and `peft ≥ 0.10`.
 
