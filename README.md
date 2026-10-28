@@ -273,14 +273,14 @@ attacks:
 
 
 
-## Open Science
 
-Source code and experiment logs are available at:
+## Citation
 
-> https://anonymous.4open.science/status/PrivScale-FL
-
----
-
-## License & Citation
-
-Provided for academic peer review.
+@inproceedings{
+anonymous2026privacy,
+title={Privacy Risk Scales with Effective Dimension in Federated Learning},
+author={Anonymous},
+booktitle={The Fortieth Annual Conference on Neural Information Processing Systems},
+year={2026},
+url={https://openreview.net/forum?id=5j1BWwjOvX}
+}
